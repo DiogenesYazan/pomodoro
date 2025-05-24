@@ -1,0 +1,19 @@
+name: pomodoro
+description: Timer Pomodoro funcional e polido
+publish_to: "none"
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  percent_indicator: ^4.2.5
+  audioplayers: ^5.2.1
+  shared_preferences: ^2.0.15   # <<< Nova dependência para salvar dados localmente
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sounds/alarm.mp3    # Som de alarme
