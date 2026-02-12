@@ -2,7 +2,7 @@
 
 ## 🚀 Sobre o Projeto
 
-O **Pomodoro** é um aplicativo Flutter que auxilia na gestão do tempo utilizando a técnica Pomodoro ⏲️. Ele ajuda a aumentar a produtividade, alternando períodos de foco e pausas.
+O **Tempus** é um aplicativo Flutter que auxilia na gestão do tempo utilizando a técnica Pomodoro ⏲️. Ele ajuda a aumentar a produtividade, alternando períodos de foco e pausas.
 
 <p align="center">
     <img src="https://i.imgur.com/T4yDy7y.png" alt="Tempus logo" width="140" />
@@ -25,6 +25,40 @@ O **Pomodoro** é um aplicativo Flutter que auxilia na gestão do tempo utilizan
 - Configuração de tempo de foco e descanso ⚙️
 - Histórico de sessões concluídas 📊
 - Notificações sonoras ao final de cada ciclo 🔔
+
+## ✨ Novidades (Tempus)
+
+- **Tema roxo com gradiente + Dark Mode:** visual renovado com suporte a tema escuro automático.
+- **Novas telas:** `Home`, `Stats`, `Settings`, `Profile`, `About` com navegação moderna.
+- **Persistência local:** preferências e histórico salvos via serviço de armazenamento.
+- **Áudio e notificações:** serviço dedicado para tocar sons ao fim dos ciclos.
+- **Configurações avançadas:** personalização de durações, som e comportamento do timer.
+
+## 🏗 Arquitetura & principais arquivos
+
+- **Pasta modular:** o código está organizado em `lib/theme`, `lib/screens`, `lib/widgets`, `lib/providers`, `lib/services`, `lib/models`.
+- **Gerenciamento de estado:** `provider` para `TimerProvider` e `SettingsProvider` (veja `lib/providers`).
+- **Serviços principais:** `StorageService` (persistência) e `AudioService` (sons) em `lib/services`.
+- **Tema centralizado:** `lib/theme/tempus_theme.dart` e `lib/theme/tempus_colors.dart`.
+- **Tela About melhorada:** `lib/screens/about/about_screen.dart` — agora abre links com tratamento de erro e feedback.
+
+## 🧭 Build & Observações
+
+- Para rodar localmente:
+
+```bash
+flutter pub get
+flutter run
+```
+
+- Para gerar APK via CLI:
+
+```bash
+flutter build apk
+```
+
+- Observação Android: builds Android dependem do SDK/NDK e da versão do Android Gradle Plugin; se encontrar erros de NDK ou AGP, verifique as variáveis de ambiente (`ANDROID_SDK_ROOT` / `ANDROID_HOME`) e o arquivo `android/settings.gradle.kts`.
+
 
 ## 📱 Tecnologias Utilizadas
 
