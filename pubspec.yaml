@@ -1,5 +1,5 @@
 name: pomodoro
-description: Timer Pomodoro funcional e polido
+description: Tempus — Timer Pomodoro profissional
 publish_to: "none"
 
 environment:
@@ -9,11 +9,21 @@ dependencies:
   flutter:
     sdk: flutter
   percent_indicator: ^4.2.5
-  audioplayers: ^5.2.1
-  shared_preferences: ^2.0.15   # <<< Nova dependência para salvar dados localmente
+  audioplayers: ^6.5.1
+  shared_preferences: ^2.5.3
+  provider: ^6.1.2
+  url_launcher: ^6.2.6
 
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/sounds/alarm.mp3    # Som de alarme
+    - assets/sounds/alarm.mp3
