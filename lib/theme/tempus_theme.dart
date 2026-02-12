@@ -169,13 +169,15 @@ class TempusTheme {
       // Switch
       switchTheme: SwitchThemeData(
         thumbColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected))
+          if (states.contains(WidgetState.selected)) {
             return TempusColors.deepPurple;
+          }
           return TempusColors.orchid;
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected))
+          if (states.contains(WidgetState.selected)) {
             return TempusColors.lavender;
+          }
           return TempusColors.surface;
         }),
       ),
@@ -283,11 +285,15 @@ class TempusTheme {
       // Switch
       switchTheme: SwitchThemeData(
         thumbColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) return TempusColors.accent;
+          if (states.contains(WidgetState.selected)) {
+            return TempusColors.accent;
+          }
           return TempusColors.orchid;
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) return TempusColors.plum;
+          if (states.contains(WidgetState.selected)) {
+            return TempusColors.plum;
+          }
           return TempusColors.surfaceDark;
         }),
       ),

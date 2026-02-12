@@ -11,15 +11,17 @@ class AboutScreen extends StatelessWidget {
     try {
       final launched =
           await launchUrl(uri, mode: LaunchMode.externalApplication);
-      if (!launched) {
+      if (!launched && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Não foi possível abrir o link')),
         );
       }
     } catch (_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Erro ao abrir o link')),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Erro ao abrir o link')),
+        );
+      }
     }
   }
 

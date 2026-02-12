@@ -2,6 +2,8 @@
 
 #include <dwmapi.h>
 #include <flutter_windows.h>
+#include <cstdlib>
+#include <string>
 
 #include "resource.h"
 
@@ -134,8 +136,22 @@ bool Win32Window::Create(const std::wstring& title,
   UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
   double scale_factor = dpi / 96.0;
 
+  // Allow forcing a "mobile" portrait window via env var MOBILE_WINDOW=1.
+  // When set, use a fixed, non-resizable window style to mimic a phone.
+  DWORD window_style = WS_OVERLAPPEDWINDOW;
+  char* mobile_env_buf = nullptr;
+  size_t mobile_env_len = 0;
+  errno_t env_err = _dupenv_s(&mobile_env_buf, &mobile_env_len, "MOBILE_WINDOW");
+  if (env_err == 0 && mobile_env_buf != nullptr) {
+    std::string me(mobile_env_buf);
+    if (me == "1") {
+      window_style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX;
+    }
+    free(mobile_env_buf);
+  }
+
   HWND window = CreateWindow(
-      window_class, title.c_str(), WS_OVERLAPPEDWINDOW,
+      window_class, title.c_str(), window_style,
       Scale(origin.x, scale_factor), Scale(origin.y, scale_factor),
       Scale(size.width, scale_factor), Scale(size.height, scale_factor),
       nullptr, nullptr, GetModuleHandle(nullptr), this);
