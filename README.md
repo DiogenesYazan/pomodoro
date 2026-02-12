@@ -1,4 +1,4 @@
-# pomodoro
+# Tempus
 
 ## 🚀 Sobre o Projeto
 
