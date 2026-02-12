@@ -4,10 +4,19 @@
 
 O **Pomodoro** é um aplicativo Flutter que auxilia na gestão do tempo utilizando a técnica Pomodoro ⏲️. Ele ajuda a aumentar a produtividade, alternando períodos de foco e pausas.
 
-<p float="left">
-  <img src="https://i.imgur.com/WQgWFnn.jpeg" width="33%" />
-  <img src="https://i.imgur.com/bR4HAyl.jpeg" width="33%" />
-  <img src="https://i.imgur.com/s54zuZ1.png" width="33%" />
+<p align="center">
+    <img src="https://i.imgur.com/T4yDy7y.png" alt="Tempus logo" width="140" />
+</p>
+
+<p align="center">
+    <img src="https://i.imgur.com/OmqvUcE.jpeg" alt="Screenshot 1" width="260" style="margin:6px; border-radius:12px;" />
+    <img src="https://i.imgur.com/GnSYsi1.jpeg" alt="Screenshot 2" width="260" style="margin:6px; border-radius:12px;" />
+    <img src="https://i.imgur.com/zTDhhNS.jpeg" alt="Screenshot 3" width="260" style="margin:6px; border-radius:12px;" />
+</p>
+
+<p align="center">
+    <img src="https://i.imgur.com/QMSgOig.jpeg" alt="Screenshot 4" width="260" style="margin:6px; border-radius:12px;" />
+    <img src="https://i.imgur.com/2i2xxKs.jpeg" alt="Screenshot 5" width="260" style="margin:6px; border-radius:12px;" />
 </p>
 
 ## 🛠️ Funcionalidades
