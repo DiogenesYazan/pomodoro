@@ -38,7 +38,7 @@ jobs:
           path: build/app/outputs/flutter-apk/app-release.apk
 
   build-linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
@@ -62,16 +62,51 @@ jobs:
       - name: Build Linux
         run: flutter build linux --release
       
-      - name: Compress Linux build
+      - name: Install AppImage dependencies
         run: |
-          cd build/linux/x64/release
-          tar -czf Tempus-Linux.tar.gz bundle/
+          wget -O appimagetool "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
+          chmod +x appimagetool
       
-      - name: Upload Linux build
+      - name: Create AppImage structure
+        run: |
+          mkdir -p AppDir/usr/bin
+          mkdir -p AppDir/usr/lib
+          cp -r build/linux/x64/release/bundle/* AppDir/usr/bin/
+          
+          # Create desktop entry
+          cat > AppDir/tempus.desktop << EOF
+          [Desktop Entry]
+          Name=Tempus
+          Exec=pomodoro
+          Icon=tempus
+          Type=Application
+          Categories=Utility;
+          EOF
+          
+          # Create AppRun script
+          cat > AppDir/AppRun << 'EOF'
+          #!/bin/bash
+          SELF=$(readlink -f "$0")
+          HERE=${SELF%/*}
+          export PATH="${HERE}/usr/bin:${PATH}"
+          export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
+          cd "${HERE}/usr/bin"
+          exec ./pomodoro "$@"
+          EOF
+          chmod +x AppDir/AppRun
+          
+          # Copy icon (use a placeholder if icon doesn't exist)
+          touch AppDir/tempus.png
+      
+      - name: Build AppImage
+        run: |
+          ARCH=x86_64 ./appimagetool AppDir Tempus-Linux-x86_64.AppImage
+      
+      - name: Upload AppImage
         uses: actions/upload-artifact@v4
         with:
           name: Tempus-Linux
-          path: build/linux/x64/release/Tempus-Linux.tar.gz
+          path: Tempus-Linux-x86_64.AppImage
 
   build-windows:
     runs-on: windows-latest
