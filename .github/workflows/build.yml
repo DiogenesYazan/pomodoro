@@ -64,6 +64,7 @@ jobs:
       
       - name: Install AppImage dependencies
         run: |
+          sudo apt-get install -y libfuse2
           wget -O appimagetool "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
           chmod +x appimagetool
       
@@ -100,7 +101,7 @@ jobs:
       
       - name: Build AppImage
         run: |
-          ARCH=x86_64 ./appimagetool AppDir Tempus-Linux-x86_64.AppImage
+          ARCH=x86_64 ./appimagetool --no-appstream AppDir Tempus-Linux-x86_64.AppImage
       
       - name: Upload AppImage
         uses: actions/upload-artifact@v4
