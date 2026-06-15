@@ -225,7 +225,7 @@ class AboutScreen extends StatelessWidget {
                       width: double.infinity,
                       child: OutlinedButton.icon(
                         onPressed: () =>
-                            _openUrl(context, 'https://diogenesyuri.works/'),
+                            _openUrl(context, 'https://diogenesyuri.vercel.app/'),
                         icon: const Icon(Icons.language_rounded),
                         label: const Text('Visitar Portfólio'),
                       ),
